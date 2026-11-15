@@ -12,7 +12,7 @@ bash scripts/test.sh
 | `tests/SettingsTests.m` | Settings round trip, mutually exclusive gestures, malformed values, write failure. |
 | `tests/bluetooth_setup_tests.py` | `bt-spoof` on fixture caches: apply, restore, repeated apply/restore, and refusal (no write, no backup) on unexpected layouts: no trackpad, two trackpads, wrong field sizes, unknown product ID, missing or ambiguous `SdpCache`, a non-plist file, a missing file. |
 
-CI (`.github/workflows/ci.yml`) runs the tests and builds the release zip on macOS 14 for every push and pull
+CI (`.github/workflows/ci.yml`) runs the tests and builds the release zip on a macOS runner (deployment target 14.0) for every push and pull
 request. Hardware behavior (Bluetooth, USB, gestures) can only be checked on a real trackpad.
 
 ## Bluetooth change: what it does and what to expect

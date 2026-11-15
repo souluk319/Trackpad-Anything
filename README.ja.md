@@ -62,6 +62,7 @@ macOS 15にアップデートせずに、**Bluetooth**でも**USB**でもマル�
 - macOS **14 Sonoma**（14.7.2で確認）
 - **Apple Silicon** 搭載Mac（Intel版は未提供）
 - Magic Trackpad（USB‑C）、USB製品ID `0x0324`
+- テスト済みの範囲と、元に戻す・復旧する方法：[テストと復旧（英語）](docs/TESTING.md) · [サードパーティ通知（英語）](docs/THIRD-PARTY.md)
 
 > macOS 15.1以降ならこのアプリは不要です。Appleが公式にサポートしています。
 

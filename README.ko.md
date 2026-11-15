@@ -62,6 +62,7 @@ USB부터 직접 읽어서 해결했고, 블루투스는 훨씬 어려웠어요.
 - macOS **14 Sonoma**. 14.7.2에서 시험했어요.
 - **Apple Silicon** Mac. Intel 빌드는 아직 없어요.
 - Magic Trackpad (USB‑C), USB 제품 ID `0x0324`
+- 시험한 범위와 되돌리기·복구 방법: [테스트 및 복구 (영문)](docs/TESTING.md) · [서드파티 고지 (영문)](docs/THIRD-PARTY.md)
 
 > macOS 15.1 이상이라면 이 앱이 필요 없어요. Apple이 공식 지원해요.
 

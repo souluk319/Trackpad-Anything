@@ -62,6 +62,7 @@ USB 先通过直接读取数据解决了。蓝牙则难得多：Sonoma 会在任
 - macOS **14 Sonoma**（已在 14.7.2 上测试）
 - **Apple 芯片** Mac（暂不提供 Intel 版本）
 - 妙控板（USB‑C），USB 产品 ID `0x0324`
+- 已测试范围以及撤销和恢复方法：[测试与恢复（英文）](docs/TESTING.md) · [第三方声明（英文）](docs/THIRD-PARTY.md)
 
 > 如果你使用 macOS 15.1 或更高版本，则不需要此应用，Apple 已官方支持。
 

@@ -65,12 +65,13 @@ int main(int argc,const char**argv){@autoreleasepool{
  if([mode isEqualToString:@"status"])return 0;
  BOOL apply=[mode isEqualToString:@"apply"];if(!apply&&![mode isEqualToString:@"restore"])return 64;
 
+ // Validate and convert in memory first, so an unexpected cache never causes any write (not even the backup).
+ Convert(v,apply?kReal:kSpoof,apply?kSpoof:kReal);
  NSString*backup=[path stringByAppendingString:@".tc-before-pid-spoof"];
  if(apply&&![NSFileManager.defaultManager fileExistsAtPath:backup]){
   if(![NSFileManager.defaultManager copyItemAtPath:path toPath:backup error:nil])Stop(@"io: backup failed; nothing changed");
   chmod(backup.fileSystemRepresentation,0600);printf("BACKUP %s\n",backup.UTF8String);
  }
- Convert(v,apply?kReal:kSpoof,apply?kSpoof:kReal);
 
  NSData*out=[NSPropertyListSerialization dataWithPropertyList:root format:NSPropertyListBinaryFormat_v1_0 options:0 error:nil];
  if(!out)Stop(@"io: serialize failed; nothing changed");

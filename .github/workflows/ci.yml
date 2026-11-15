@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Engine, settings and bt-spoof fixture tests
+        run: bash scripts/test.sh
+  release-build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: GUI/package-lock.json
+      - name: Install libusb
+        run: brew install libusb pkg-config
+      - name: Install GUI dependencies
+        run: cd GUI && npm ci
+      - name: Build release zip (ad-hoc signed)
+        run: bash scripts/package-release.sh
+      - name: Smoke-test the bundle
+        run: |
+          app="build/release/Trackpad Anything.app"
+          codesign --verify --strict "$app"
+          test -x "$app/Contents/MacOS/TrackpadCompatGUI"
+          for tool in usb-helper bt-spoof space-command; do test -x "$app/Contents/Resources/$tool"; done
+          test -f "$app/Contents/Resources/GUI/index.html"
+          test -f "$app/Contents/Resources/ThirdParty-libusb-COPYING.txt"
+          ls -l build/release/*.zip

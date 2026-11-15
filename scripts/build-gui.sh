@@ -22,6 +22,9 @@ PY
 if [ -f Resources/AppIcon.icns ]; then cp Resources/AppIcon.icns "$app/Contents/Resources/"; fi
 cp Resources/MenuBarMascot.png Resources/MenuBarMascot@2x.png "$app/Contents/Resources/"
 cp GUI/src/locales.json "$app/Contents/Resources/locales.json"
+# libusb is LGPL-2.1 and linked statically: ship its license next to the binary (see docs/THIRD-PARTY.md).
+cp "$(brew --prefix libusb)/COPYING" "$app/Contents/Resources/ThirdParty-libusb-COPYING.txt"
+cp docs/THIRD-PARTY.md "$app/Contents/Resources/ThirdParty-NOTICES.md"
 # TC_SIGN=adhoc: no personal certificate (release builds, or building from source without setup).
 if [ "${TC_SIGN:-local}" = adhoc ]; then
   for target in "$app/Contents/Resources/usb-helper" "$app/Contents/Resources/bt-spoof" "$app/Contents/Resources/space-command" "$app"; do codesign --force --sign - --timestamp=none "$target"; done

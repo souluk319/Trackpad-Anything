@@ -200,7 +200,7 @@ That's expected. It's a display field and doesn't affect which driver is used.
 ## Build from source
 
 ```sh
-# Requirements: Xcode Command Line Tools, Homebrew libusb + pkg-config, Node.js 20+
+# Requirements: Xcode Command Line Tools, Homebrew libusb + pkg-config, Node.js 22.13+
 brew install libusb pkg-config
 git clone https://github.com/souluk319/Trackpad-Anything.git
 cd Trackpad-Anything/GUI && npm ci && cd ..
